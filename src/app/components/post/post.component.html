@@ -1,0 +1,36 @@
+<div class="dropdown settings">
+    <i class="fa fa-cog" data-toggle="dropdown">
+      Settings
+    </i>
+    <div class="dropdown-menu">
+      <a class="dropdown-item">User:{{user}}</a>
+      <a class="dropdown-item" href="/login">Logout</a>
+    </div>
+</div>
+<div class="row">
+  <div class="col align">
+    <form [formGroup]="postForm">
+      <div class="form-group">
+        <label for="Post">Posts</label>
+        <input type="text" class="form-control" placeholder="Write Post" formControlName="title">
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit" [disabled]="!postForm.valid" (click)="onSubmit()">Submit</button>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label>Posts:</label>
+          <div *ngFor="let p of post">
+              <b>{{p.user}}</b> 
+            <div class="card">
+              <div class="card-block">
+                <span>{{p.title}} </span>
+                <i class="fa fa-pencil" title="To add a comment" routerLink="/{{p.id}}/comment" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
