@@ -21,20 +21,20 @@ export class CommentsComponent implements OnInit {
   public post_id: any;
   public post: any;
   public user: any;
-  public username: Array<object>;
 
   constructor(public fb: FormBuilder,
-    public route: ActivatedRoute,
-    public router: Router,
-    public rs: RegisterService)
+              public route: ActivatedRoute,
+              public router: Router,
+              public rs: RegisterService)
   { }
 
   ngOnInit() {
     this.user = localStorage.getItem('currentUser');
     this.post_id = this.id;
-      this.getPosts();
-      this.particularPost();
-
+    if (this.post_id) {
+        this.getPosts();
+        this.particularPost();
+    }
     this.CommentForm = this.fb.group({
       body: ['', Validators.required],
       user: this.user
@@ -49,15 +49,14 @@ export class CommentsComponent implements OnInit {
   getPosts() {
     this.rs.getPostComment(this.post_id).subscribe(data => {
       this.comment = [];
-      this.username = [];
       for (let i = 0; i < data.length; i++) {
         this.comment.push({
           'body': data[i]['body'],
           'user': data[i]['user']
         });
       }
-  });
-}
+    });
+  }
   particularPost() {
     this.rs.getPost(this.post_id).subscribe(res => {
       this.post = res['title'];

@@ -6,15 +6,6 @@
     background:#fff;
 }
 
-.alert {
-    background: #f2edda;
-    padding: 7px;
-    font-size: .9em;
-    margin-bottom: 20px;
-    display: inline-block;
-    animation: 2s alertAnim forwards;
-}
-
 .button {
     margin-top: 3rem;
 }
@@ -25,37 +16,6 @@ h1 {
     font-size: 2em;
 }
 
-
-@keyframes alertAnim {
-    from {
-        opacity:0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity:1;
-        transform: translateY(0);
-    }
-}
-.username{
-    padding-left: 89%;
-}
 .align{
     padding-left: 40px;
 }
-
-.icon-align{
-    padding-left: 96%
-}
-.glyphicon {
-    font-size: 21px;
-}
-
-.settings {
-    padding-left: 90%;
-    padding-top: 13px;
-    
- }
-
- .card-align{
-    margin-top: 50px;
- }

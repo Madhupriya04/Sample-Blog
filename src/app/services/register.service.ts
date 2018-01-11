@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, Jsonp } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
+import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 @Injectable()
 export class RegisterService {
   public actionUrl: string;
   public headers: Headers;
-  constructor(private _http: Http, private _jsonp: Jsonp) {
+  constructor(private _http: Http) {
     this.actionUrl = 'http://localhost:3000/profile';
 
     this.headers = new Headers();

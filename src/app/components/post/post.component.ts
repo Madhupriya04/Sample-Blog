@@ -13,17 +13,15 @@ export class PostComponent implements OnInit {
   public post: Array<object>;
   public user: any;
   public is_toggle: Boolean;
-  public title: any;
-  public post_user: any;
   public selected_id: any;
   public id: any;
 
 
   constructor(public fb: FormBuilder,
-    public route: ActivatedRoute,
-    public router: Router,
-    public rs: RegisterService,
-  ) {
+              public route: ActivatedRoute,
+              public router: Router,
+              public rs: RegisterService)
+  {
     this.is_toggle = true;
   }
 
@@ -38,7 +36,6 @@ export class PostComponent implements OnInit {
   onSubmit() {
 
     this.rs.createPost(this.postForm.value).subscribe(res => {
-      this.id = res.id;
       this.getPosts();
       this.postForm['controls']['title'].setValue('');
     });
@@ -55,7 +52,6 @@ export class PostComponent implements OnInit {
     this.selected_id = id;
     this.is_toggle = !this.is_toggle;
   }
-
   logOut() {
     localStorage.removeItem('currentUser');
     this.router.navigate(['/login']);
