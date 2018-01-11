@@ -1,15 +1,10 @@
-<div class="dropdown settings">
-    <i class="fa fa-cog" data-toggle="dropdown">
-      Settings
-    </i>
-    <div class="dropdown-menu">
-      <a class="dropdown-item">User:{{user}}</a>
-      <a class="dropdown-item" href="/login">Logout</a>
-    </div>
-</div>
 <div class="row align">
   <h1>POST</h1>
-  <input type="text" [ngModel]="post">
+  <div class="card card-align">
+    <div class="card-block">
+      {{post}}
+    </div>
+  </div>
 </div>
 <div class="row">
   <div class="col align">
@@ -31,7 +26,7 @@
       </div>
       <div class="form-group">
         <button class="btn btn-primary" [disabled]="CommentForm.invalid" (click)="onSubmit()">Submit</button>
-        <button class="btn btn-primary" routerLink="/post">Cancel</button>
+        <button class="btn btn-primary" (click)="onCancel()">Cancel</button>
       </div>
     </form>
   </div>

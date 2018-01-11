@@ -2,9 +2,6 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import { RegisterService } from './../../services/register.service';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/Rx';
-
 @Component({
   selector: 'app-registration-form',
   templateUrl: './registration-form.component.html',
@@ -20,10 +17,10 @@ export class RegistrationFormComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.fb.group({
-      firstName: [''],
+      firstName: ['', Validators.required],
       lastName: [''],
-      username: [''],
-      password: [''],
+      username: ['', Validators.required],
+      password: ['', Validators.required],
      });
   }
   onSubmit() {

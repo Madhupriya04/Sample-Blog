@@ -18,8 +18,7 @@ export const REGISTRAION_COMPONENTS = [
         { path: '', redirectTo: 'login', pathMatch: 'full' },
         { path: 'login', component: LoginComponent},
         { path: 'register', component: RegistrationFormComponent },
-        { path: 'post', component: PostComponent },
-        { path: ':id/comment', component: CommentsComponent }
+        { path: 'post', component: PostComponent }
       ]
     }
   ];

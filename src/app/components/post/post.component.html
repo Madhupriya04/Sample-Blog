@@ -1,11 +1,7 @@
 <div class="dropdown settings">
-    <i class="fa fa-cog" data-toggle="dropdown">
-      Settings
-    </i>
-    <div class="dropdown-menu">
-      <a class="dropdown-item">User:{{user}}</a>
-      <a class="dropdown-item" href="/login">Logout</a>
-    </div>
+  <i class="fa fa-cog" title="Logout" (click)="logOut()">
+    Logout
+  </i>
 </div>
 <div class="row">
   <div class="col align">
@@ -21,13 +17,16 @@
         <div class="col">
           <label>Posts:</label>
           <div *ngFor="let p of post">
-              <b>{{p.user}}</b> 
+            <b>{{p.user}}</b>
             <div class="card">
               <div class="card-block">
                 <span>{{p.title}} </span>
-                <i class="fa fa-pencil" title="To add a comment" routerLink="/{{p.id}}/comment" aria-hidden="true"></i>
+                <i class="fa fa-pencil" title="To add a comment" (click)="toggle(p.id)"></i>
               </div>
             </div>
+          </div>
+          <div *ngIf="is_toggle">
+            <app-comments [id]="selected_id" (showPost)="toggle(selected_id)"></app-comments>
           </div>
         </div>
       </div>

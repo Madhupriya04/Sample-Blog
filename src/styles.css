@@ -1,7 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Muli:400,700');
 
+
 body {
     background:#e8e8e8;
     font-family: 'Muli';
+}
+
+.login { 
+    padding-left : 60%;
+    padding-top: 85px;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-image: url('./assets/login1.jpg');
+    background-repeat:repeat;
 }

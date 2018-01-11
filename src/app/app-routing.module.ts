@@ -10,8 +10,7 @@ export const routes: Routes = [
     { path: '', component: LoginComponent },
     { path: 'register', component: RegistrationFormComponent}, 
     { path: 'login', component: LoginComponent},
-    { path: 'post', component: PostComponent},
-    { path: ':id/comment', component: CommentsComponent }
+    { path: 'post', component: PostComponent}
 ];
 
 @NgModule({

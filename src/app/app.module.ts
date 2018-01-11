@@ -12,6 +12,9 @@ import { LoginComponent } from './components/login/login.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { PostComponent } from './components/post/post.component';
 
+import { ImageUploadModule } from 'ng2-imageupload';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +30,7 @@ import { PostComponent } from './components/post/post.component';
     FormsModule,
     JsonpModule,
     ReactiveFormsModule,
-    
+    ImageUploadModule    
   ],
   providers: [],
   bootstrap: [AppComponent]

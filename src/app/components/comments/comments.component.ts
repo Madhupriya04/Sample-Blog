@@ -1,44 +1,49 @@
-import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { RegisterService } from './../../services/register.service';
+import { PostComponent} from '../post/post.component';  
 
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
   styleUrls: ['./comments.component.css'],
-  providers: [RegisterService]
+  providers: [RegisterService],
 })
+
 export class CommentsComponent implements OnInit {
-  
+
+  @Input() id;
+  @Output() showPost = new EventEmitter();
+
   public CommentForm: FormGroup;
   public comment: Array<any>;
   public post_id: any;
   public post: any;
   public user: any;
   public username: Array<object>;
+
   constructor(public fb: FormBuilder,
     public route: ActivatedRoute,
     public router: Router,
-    public rs: RegisterService
-  ) { }
+    public rs: RegisterService)
+  { }
 
   ngOnInit() {
     this.user = localStorage.getItem('currentUser');
-    this.route.params.subscribe(params => {
-      this.post_id = params['id'];
+    this.post_id = this.id;
       this.getPosts();
       this.particularPost();
-    });
 
     this.CommentForm = this.fb.group({
-      body: [''],
+      body: ['', Validators.required],
       user: this.user
     });
   }
   onSubmit() {
     this.rs.postComment(this.CommentForm.value, this.post_id).subscribe(res => {
       this.getPosts();
+      this.CommentForm['controls']['body'].setValue('');
     });
   }
   getPosts() {
@@ -50,15 +55,16 @@ export class CommentsComponent implements OnInit {
           'body': data[i]['body'],
           'user': data[i]['user']
         });
-        // this.username.push(data[i]['user']);
-        }
-        console.log( this.comment)
+      }
   });
 }
   particularPost() {
     this.rs.getPost(this.post_id).subscribe(res => {
       this.post = res['title'];
     });
+  }
+  onCancel() {
+    this.showPost.emit('cancel');
   }
   logOut() {
     localStorage.removeItem('currentUser');
