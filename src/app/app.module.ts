@@ -12,8 +12,6 @@ import { LoginComponent } from './components/login/login.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { PostComponent } from './components/post/post.component';
 
-import { ImageUploadModule } from 'ng2-imageupload';
-
 
 @NgModule({
   declarations: [
@@ -29,8 +27,7 @@ import { ImageUploadModule } from 'ng2-imageupload';
     HttpModule,
     FormsModule,
     JsonpModule,
-    ReactiveFormsModule,
-    ImageUploadModule    
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
