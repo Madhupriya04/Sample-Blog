@@ -13,7 +13,7 @@ import { PostComponent} from '../post/post.component';
 
 export class CommentsComponent implements OnInit {
 
-  @Input() id;
+  @Input() p;
   @Output() showPost = new EventEmitter();
 
   public CommentForm: FormGroup;
@@ -30,7 +30,7 @@ export class CommentsComponent implements OnInit {
 
   ngOnInit() {
     this.user = localStorage.getItem('currentUser');
-    this.post_id = this.id;
+    this.post_id = this.p.id;
     if (this.post_id) {
         this.getPosts();
         this.particularPost();

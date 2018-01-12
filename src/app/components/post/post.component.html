@@ -24,9 +24,9 @@
                 <i class="fa fa-pencil" title="To add a comment" (click)="toggle(p.id)"></i>
               </div>
             </div>
-          </div>
-          <div *ngIf="is_toggle">
-            <app-comments [id]="selected_id" (showPost)="toggle(selected_id)"></app-comments>
+            <div *ngIf="is_toggle">
+              <app-comments [p]="p" (showPost)="toggle(selected_id)"></app-comments>
+            </div>
           </div>
         </div>
       </div>
